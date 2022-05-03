@@ -42,3 +42,14 @@ function checkGuess() {
   guessField.value = "";
   guessField.focus();
 }
+guessSubmit.addEventListener("click", checkGuess);
+
+//Game Over Function
+function setGameOver() {
+  guessField.disabled = true;
+  guessSubmit.disabled = true;
+  resetButton = document.createElement("button");
+  resetButton.textContent = "Start New Game";
+  document.body.append(resetButton);
+  resetButton.addEventListener("Click", resetGame);
+}
