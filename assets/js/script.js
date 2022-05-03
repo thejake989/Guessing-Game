@@ -9,6 +9,7 @@ const guessField = document.querySelector(".guessField");
 
 let guessCount = 1;
 let resetButton;
+guessField.focus();
 
 // Check Guess Function
 function checkGuess() {
@@ -52,4 +53,25 @@ function setGameOver() {
   resetButton.textContent = "Start New Game";
   document.body.append(resetButton);
   resetButton.addEventListener("Click", resetGame);
+}
+
+//Reset Game Function
+function resetGame() {
+  guessCount = 1;
+
+  const resetParas = document.querySelectorAll(".resultParas p");
+  for (const resetPara of resetParas) {
+    resetPara.textContent = "";
+  }
+
+  resetButton.parentNode.removeChild(resetButton);
+
+  guessField.disabled = false;
+  guessSubmit.disabled = false;
+  guessField.value = "";
+  guessField.focus();
+
+  lastResult.style.backgroundColor = "white";
+
+  randomNumber = Math.floor(Math.random() * 100) + 1;
 }
